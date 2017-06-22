@@ -1,0 +1,19 @@
+server:
+  port: 8761
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+zuul:
+  routes:
+    client_service:
+      path: /client/**
+      serviceId: CLIENT_SERVICE
+      url: http://localhost:9006
+    mail_service:
+      path: /mail/**
+      serviceId: MAIL_SERVICE
+      url: http://localhost:9007
+  prefix: /api
+
