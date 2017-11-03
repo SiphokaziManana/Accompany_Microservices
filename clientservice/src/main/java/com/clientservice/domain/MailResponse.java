@@ -8,6 +8,12 @@ public class MailResponse {
     String responseMessage;
     String responseStatus;
 
+    public MailResponse(){
+        this.responseStatus = "Sent";
+        this.responseMessage = "A mail was sent";
+    }
+
+
     public MailResponse(String responseMessage, String responseStatus){
         this.responseStatus = responseStatus;
         this.responseMessage = responseMessage;

@@ -6,7 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 
 
-@EnableAutoConfiguration
+@EnableAutoConfiguration( exclude = {
+		org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class
+
+})
 @EnableDiscoveryClient
 @ComponentScan("com.mailservice")
 public class MailApplication {

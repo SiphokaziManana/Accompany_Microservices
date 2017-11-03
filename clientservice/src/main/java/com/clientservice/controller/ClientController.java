@@ -1,5 +1,6 @@
 package com.clientservice.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,14 +11,14 @@ import com.clientservice.service.ClientService;
 import javax.inject.Inject;
 
 @RestController
-@RequestMapping("/api/client")
+//@RequestMapping("/api/client")
 public class ClientController {
 
-	// @Autowired
-	@Inject
+	 @Autowired
+	//@Inject
 	ClientService clientService;
 
-	@CrossOrigin()
+	//@CrossOrigin()
 	@RequestMapping( value = "/addClient" , method = RequestMethod.POST)
 	public ResponseEntity<Client> addClient(@RequestBody Client client){
 		return new ResponseEntity<>(clientService.storeClientInformation(client), HttpStatus.ACCEPTED);

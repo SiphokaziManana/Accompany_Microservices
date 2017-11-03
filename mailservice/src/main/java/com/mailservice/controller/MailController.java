@@ -12,17 +12,17 @@ import javax.inject.Inject;
  * Created by siphokazi on 2017/06/22.
  */
 @RestController
-@RequestMapping("/api/mail")
+//@RequestMapping("/api/mail")
 public class MailController {
 
     @Inject
     MailService mailService;
 
-    @CrossOrigin()
+    //@CrossOrigin()
     @RequestMapping( value = "sendMail", method = RequestMethod.POST)
-    public ResponseEntity<MailTemplateDTO> sendMail(@RequestBody MailTemplate mailTemplate){
+    public MailTemplateDTO sendMail(@RequestBody MailTemplate mailTemplate){
         MailTemplateDTO result  = mailService.sendMail(mailTemplate);
-        return ResponseEntity.ok(result);
+        return result;
     }
 
 

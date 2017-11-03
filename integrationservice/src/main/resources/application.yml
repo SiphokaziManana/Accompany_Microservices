@@ -17,3 +17,7 @@ zuul:
       url: http://localhost:9007
   prefix: /api
 
+#management:
+ # security:
+ #   enabled: false
+

@@ -21,13 +21,13 @@ public class MailService {
 
 	private MailTemplateDTO result;
 
-	public void sendMail(String messageBody, String emailTo)
+	public MailTemplateDTO sendMail(MailTemplate mail)
 	{
-		Properties props = new Properties();
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "587");
+		Properties props = new Properties(); //a
+		props.put("mail.smtp.auth", "true");//a
+		props.put("mail.smtp.starttls.enable", "true");//a
+		props.put("mail.smtp.host", "smtp.gmail.com");//a
+		props.put("mail.smtp.port", "587");//a
 
 		Session session = Session.getInstance(props,
 				new javax.mail.Authenticator() {
@@ -35,30 +35,25 @@ public class MailService {
 						return new PasswordAuthentication("groupquadcore@gmail.com", "quadcore123");
 					}
 				}
-		);
+		);//a
 
-		try {
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("siphokazi.manana@gmail.com"));
+		try { //a //b
+			Message message = new MimeMessage(session);//a
+			message.setFrom(new InternetAddress("siphokazi.manana@gmail.com"));//a
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(emailTo));
-			message.setSubject("Welcome to Accompany");
-			message.setText(messageBody);
+					InternetAddress.parse(mail.getEmailTo()));//a
+			message.setSubject("Welcome to Accompany");//a
+			message.setText(mail.getMessageBody());//a
 
-			Transport.send(message);
-			result = new MailTemplateDTO("Registration Email Sent","SUCCESS" );
-			System.out.println("Registration Email Sent");
+			Transport.send(message);//a
+			result = new MailTemplateDTO("Registration Email Sent","SUCCESS" );//a
 
 		}
 		catch (MessagingException e) {
 			//throw new RuntimeException(e);
 			result = new MailTemplateDTO("An exception was thrown, the exception is: \n \n"
-			+ e, "Error - EXCEPTION");
+			+ e, "Error - EXCEPTION"); //b
 		}
-	}
-
-	public MailTemplateDTO sendMail(MailTemplate mail){
-		sendMail(mail.getMessageBody(), mail.getEmailTo());
-		return result;
+		return result; //a
 	}
 }
