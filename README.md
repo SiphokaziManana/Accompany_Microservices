@@ -1,2 +1,2 @@
-# Accompany_Microservices
-Microservices Implementation of the Accompany Web Application
+# SqueakyClean Microservices
+Microservices Implementation of the SqueakyClean Web Application
